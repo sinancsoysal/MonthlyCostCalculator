@@ -9,9 +9,15 @@ public class App {
         Scanner sc = new Scanner(System.in);
         
         for (User user : users) {
-            System.out.printf("Harcamayi gir (%s): ", user.name);
-            user.value = readInput(sc);
+            System.out.printf("%s'in harcamalari:\n", user.name);
+            float input = 0;
+            while(input != -1) {
+                System.out.printf("\tHarcamayi gir (%s): ", user.name);
+                input = readInput(sc);
+                user.value += input;
+            }
             total += user.value;
+            System.out.printf("%s'in toplam harcamasi: %.2f\n", user.name, user.value);
         }
 
         avg = total / (float) users.size();
